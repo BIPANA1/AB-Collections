@@ -29,6 +29,7 @@
                             <li><a style="font-size: 23px" href="#">View Cart</a></li>
                         </ul>
                     </div>
+                  
                     <div style="margin-left: 30px">
                         @if(auth()->check())
                         @php
@@ -38,7 +39,7 @@
                         <img id="profile-img" name="avatar" class="user-img" onclick="toggleDropdown();" src=" {{$avatar}} " alt="Profile Image">
                         <div class="click-img" id="dropdown">
                             <a href="/create">Edit Profile</a>
-                            <a href="/view-profile">View Profile</a>
+                            <a href="/view-profile"></a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
@@ -48,6 +49,8 @@
                         </div>
                         @endif
                     </div>
+                   
+                    
 
                 </div>
             </div>
