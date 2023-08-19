@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{asset('css/addproduct.css')}}" />
+    <title>Category Page</title>
+    <link rel="stylesheet" href="{{asset('css/product.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
@@ -15,6 +15,7 @@
                 <div class="img">
                     <img class="image-logo" src="/Image/ESBA.png" alt="" />
                 </div>
+
                 <ul>
                     <li>
                         <a href="/home" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
@@ -30,12 +31,12 @@
                         <a href="" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Order
                         </a>
                     </li>
-                    <li>
-                        <a href="/category" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Category
+                    <li style="background-color: #4414a4">
+                        <a href="/category" class="icon-a" style="color: white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Category
                         </a>
                     </li>
-                    <li style="background-color: #4414a4">
-                        <a href="/product" class="icon-a" style="color: white"><i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;&nbsp; Product
+                    <li>
+                        <a href="/product" class="icon-a"><i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;&nbsp; Product
                         </a>
                     </li>
                 </ul>
@@ -50,9 +51,38 @@
                     @csrf
                 </form>
                 </a>
-                <!-- <input type="button" value="LOGOUT" /> -->
             </div>
+            <div class="product-heading">
+                <div class="add-product">
+                    <h2>Category</h2>
+                </div>
+                <div class="add-product">
+                    <a href="/addcategory"><button class="add-btn">
+                            <span>Add Category</span>
+                        </button></a>
 
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="ProductTable">
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach($categories as $cat)
+                    <tr>
+                        <td>{{$cat->name}}</td>
+                        <td>
+                            <a href="/delete-category/{{$cat->id}}"> <button class="Delete">Delete</button></a>
+                        </td>
+                    </tr>
+                    @endforeach
+
+
+                </table>
+            </div>
         </div>
     </div>
 </body>

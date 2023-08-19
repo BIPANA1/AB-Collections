@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,7 @@ class ProductController extends Controller
             $file->move(public_path('images/'), $fileName);
         }
         $product->image = 'images/' . $fileName;
+        $product->category_id = $request->category_id;
         $product->save();
         return redirect('/product');
     }
@@ -57,7 +59,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = product::find($id);
-        return view('admin.editproduct', compact('product'));
+        $categories = category::all();
+        return view('admin.editproduct', compact('product', 'categories'));
     }
 
     /**
@@ -70,6 +73,7 @@ class ProductController extends Controller
         $product->brand = $request->brand;
         $product->stock = $request->stock;
         $product->price = $request->price;
+        $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . '.' . $file->getClientOriginalName();
