@@ -74,10 +74,10 @@
                                 <label for="address">{{ __('Address') }}</label>
                                 <input id="address" type="text" class="form-control" name="address" value="{{Auth::user()->address}}" required autocomplete="address">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="phone">{{ __('Phone') }}</label>
                                 <input id="phone" type="text" class="form-control" name="phone" value="{{Auth::user()->phone}}" required autocomplete="phone">
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label for="avatar">{{ __('Avatar') }}</label>
