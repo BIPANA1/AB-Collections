@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('brand');
             $table->bigInteger('stock');
             $table->bigInteger('price');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
