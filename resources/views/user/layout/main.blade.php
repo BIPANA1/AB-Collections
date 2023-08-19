@@ -29,6 +29,7 @@
                             <li><a style="font-size: 23px" href="#">View Cart</a></li>
                         </ul>
                     </div>
+                  
                     <div style="margin-left: 30px">
                         @if(auth()->check())
                         @php
@@ -48,6 +49,8 @@
                         </div>
                         @endif
                     </div>
+                   
+                    
 
                 </div>
             </div>
