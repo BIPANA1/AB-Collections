@@ -17,16 +17,15 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
+                        <a href="/home" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
                             Dashboard
                         </a>
                     </li>
-                    <!-- <li>
-              <a href="" class="icon-a"
-                ><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
-                Customer
-              </a>
-            </li> -->
+                    <li>
+                        <a href="" class="icon-a"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
+                            Customer
+                        </a>
+                    </li>
                     <li>
                         <a href="" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Order
                         </a>
@@ -40,7 +39,13 @@
         </div>
         <div class="box2">
             <div class="box2-header">
-                <input class="btn" type="button" value="LOGOUT" />
+                <a class="btn" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class=" fs-4 text-white navbar-brand"> {{ __('Logout') }}</a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                </a>
             </div>
             <div class="form">
                 <form action="/update-product/{{$product->id}}" method="post" enctype="multipart/form-data">
@@ -57,6 +62,12 @@
                         <label for="productImg">Upload Image</label>
                         <img src="{{asset($product->image)}}" alt="" width="80">
                         <input type="file" name="image" id="productImg" />
+                        <label for="">Category</label>
+                        <select name="category_id" id="">
+                            @foreach($categories as $cat)
+                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <input type="submit" value="Update product" placeholder="Add" />
                 </form>

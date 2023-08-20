@@ -18,7 +18,7 @@
 
                 <ul>
                     <li>
-                        <a href="" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
+                        <a href="/home" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
                             Dashboard
                         </a>
                     </li>
@@ -31,6 +31,10 @@
                         <a href="" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Order
                         </a>
                     </li>
+                    <li>
+                        <a href="/category" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Category
+                        </a>
+                    </li>
                     <li style="background-color: #4414a4">
                         <a href="/product" class="icon-a" style="color: white"><i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;&nbsp; Product
                         </a>
@@ -40,7 +44,13 @@
         </div>
         <div class="box2">
             <div class="box2-header">
-                <input class="btn" type="button" value="LOGOUT" />
+                <a class="btn" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class=" fs-4 text-white navbar-brand"> {{ __('Logout') }}</a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                </a>
             </div>
             <div class="product-heading">
                 <div class="add-product">
@@ -63,6 +73,7 @@
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Brand</th>
+                        <th>Category</th>
                         <th>Action</th>
                     </tr>
 
@@ -74,6 +85,7 @@
                         <td>{{$product->price}}</td>
                         <td>{{$product->stock}}</td>
                         <td>{{$product->brand}}</td>
+                        <td>{{$product->category['name']}}</td>
                         <td>
                             <a href="/edit-product{{$product->id}}"> <button class="Edit">Edit</button></a>
                             <a href="/delete-product/{{$product->id}}"> <button class="Delete">Delete</button></a>
