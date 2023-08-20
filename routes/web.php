@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EditProfileController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
 use App\Models\Editprofile;
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/show-category', [FilterController::class, 'showCategory']);
+Route::get('/show-highestprice', [FilterController::class, 'showHighestPrice']);
 Auth::routes();
 
 Route::group(['middleware' => ["auth", "admin"]], function () {
