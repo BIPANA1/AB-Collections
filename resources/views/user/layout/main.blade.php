@@ -26,16 +26,10 @@
                 <div class="logo">
                     <a href="/home"> <img src="/Image/ESBA.png" alt="ESBA Logo" style="height: 40px; width: 90px"> </a>
                 </div>
-                <!-- Beautiful Dropdown Menu -->
-                <div class="dropdown mt-3 mb-2" style="float: left;">
-                    <button class=" btn-white border btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i style="color: white;" class="fa-solid fa-filter"> </i> Filter
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item dropdown-item-sm" href="/show-category">Category</a>
-                        <a class="dropdown-item dropdown-item-sm" href="/show-highestprice">Highest Price</a>
-                    </div>
-                </div>
+                
+                <ul>
+                <li><a style="font-size: 23px" href="/create-products">Product</a></li>
+                </ul>
                 <div class="logo search-div">
                     <div class="input-group">
                         <input type="text" class="input" name="search" placeholder="Search">
@@ -47,9 +41,7 @@
                         <ul style="margin-top: 10px">
                             <li><a style="font-size: 23px; background-color: white; color: black;" href="/home">Home</a></li>
                             <li><a style="font-size: 23px" href="#">View Cart</a></li>
-                        </ul>
-                    </div>
-
+                       
                     <div style="margin-left: 30px">
                         @if(auth()->check())
                         @php
@@ -67,16 +59,21 @@
                                 @csrf
                             </form>
                         </div>
+
+                        @else
+                        <li><a style="font-size: 23px" href="{{ route('login') }}">Login</a></li>
+                        <li><a style="font-size: 23px" href="{{ route('register') }}">Register</a></li>
                         @endif
                     </div>
 
-
-
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
 
         @yield('content')
+
     </div>
     <script>
         function toggleDropdown() {

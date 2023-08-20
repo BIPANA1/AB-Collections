@@ -28,4 +28,9 @@ class FrontendController extends Controller
     {
         return view('admin.addcategory');
     }
+
+    public function createProduct(){
+        $products = product::all();
+        return view('user.product',compact('products'));
+    }
 }

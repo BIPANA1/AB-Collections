@@ -4,8 +4,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Models\Editprofile;
+use App\Models\product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +22,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products = product::all();
+    return view('user.home',compact('products'));
 });
+// Route::get('/',[HomeController::class,'welcome']);
 
+// Route::get('/user-home',[HomeController::class,'home']);
+Route::get('/create-products',[FrontendController::class,'createProduct']);
 
 Route::get('/show-category', [FilterController::class, 'showCategory']);
 Route::get('/show-highestprice', [FilterController::class, 'showHighestPrice']);
@@ -51,4 +57,7 @@ Route::group(['middleware' => ["auth"]], function () {
     Route::get('/create', [EditProfileController::class, 'create']);
     Route::post('/update-profile', [EditProfileController::class, 'editProfile'])->name('update-profile');;
     Route::get('/view-profile', [EditProfileController::class, 'viewProfile']);
+
+    // product page
+    Route::get('/create-products',[FrontendController::class,'createProduct']);
 });
