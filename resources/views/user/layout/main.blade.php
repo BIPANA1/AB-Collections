@@ -59,7 +59,7 @@
                         <img id="profile-img" name="avatar" class="user-img" onclick="toggleDropdown();" src=" {{$avatar}} " alt="Profile Image">
                         <div class="click-img" id="dropdown">
                             <a href="/create">Edit Profile</a>
-                            <a href="/view-profile"></a>
+                            <a href="/view-profile">View Profiles</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
