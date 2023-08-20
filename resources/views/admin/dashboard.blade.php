@@ -50,7 +50,7 @@
                     @csrf
                 </form>
                 </a>
-                <!-- <input type="button" value="LOGOUT" /> -->
+
             </div>
 
         </div>
