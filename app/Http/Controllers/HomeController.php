@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\product;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,14 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->role==1){
+        if (auth()->user()->role == 1) {
             return view('admin.dashboard');
-        }else{
-
-            $products = product::all();
-            $users= User::all();
-            return view('user.home',compact('users','products'));
+        } else {
+            $users = User::all();
+            return view('user.home', compact('users'));
         }
-        
     }
 }
