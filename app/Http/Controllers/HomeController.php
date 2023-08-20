@@ -27,9 +27,9 @@ class HomeController extends Controller
         if(auth()->user()->role==1){
             return view('admin.dashboard');
         }else{
-    
+            $products = product::all();
             $users= User::all();
-            return view('user.home',compact('users'));
+            return view('user.home',compact('users','products'));
         }
         
     }
