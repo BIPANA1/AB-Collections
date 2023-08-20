@@ -17,7 +17,7 @@
         <div class="box">
           <div class="card">
             <img
-              src="{{asset('$product->image')}}"
+              src="{{asset($product->image)}}"
               alt="Denim Jeans"
               style="width: 260px; height: 300px"
             />
