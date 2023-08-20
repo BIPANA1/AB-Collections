@@ -21,7 +21,7 @@
               alt="Denim Jeans"
               style="width: 260px; height: 300px"
             />
-            <h2>{{$product->productName}}</h2>
+            <h2></h2>
             <p class="price">{{$product->price}}</p>
             <p class="brand">{{$product->brand}}</p>
             <p class="stock">{{$product->category['name']}}</p>
