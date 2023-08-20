@@ -31,11 +31,4 @@ class HomeController extends Controller
             return view('user.home', compact('users'));
         }
     }
-    // public function filter()
-    // {
-
-    //     $products = product::all();
-    //     $categories = category::all();
-    //     return view('welcome', compact('product', 'categories'));
-    // }
 }
