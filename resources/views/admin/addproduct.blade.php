@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Add Product</title>
     <link rel="stylesheet" href="{{asset('css/addproduct.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
@@ -50,9 +50,32 @@
                     @csrf
                 </form>
                 </a>
-                <!-- <input type="button" value="LOGOUT" /> -->
             </div>
+            <div class="form">
+                <form action="/store-product" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="product-input-dtls">
+                        <label for="productName">Product Name</label>
+                        <input type="text" name="productName" id="productName" />
+                        <label for="price">Quantity</label>
+                        <input type="text" name="stock" id="stock" />
+                        <label for="price">Price</label>
+                        <input type="text" name="price" id="price" />
+                        <label for="brand">Brand</label>
+                        <input type="text" name="brand" id="brand" />
+                        <label for="productImg">Upload Image</label>
+                        <input type="file" name="image" id="productImg" />
+                        <label for="">Category</label>
+                        <select name="category_id" id="">
+                            @foreach($categories as $cat)
+                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
 
+                    </div>
+                    <input type="submit" value="Add product" placeholder="Add" />
+                </form>
+            </div>
         </div>
     </div>
 </body>
