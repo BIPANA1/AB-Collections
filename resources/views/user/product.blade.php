@@ -64,20 +64,28 @@
 
 
 
-<div class="product-list">
+    <div class="product-list">
     @foreach($products as $product)
     <div class="box">
-        <div class="card">
-            <img src="{{asset($product->image)}}" alt="Denim Jeans" style="width: 260px; height: 300px" />
-            <h2>{{$product->productName}}</h2>
-            <p class="price">{{$product->price}}</p>
-            <p class="brand">{{$product->brand}}</p>
-            <p class="stock">{{$product->category['name']}}</p>
-            <p><button>Add to Cart</button></p>
-        </div>
+      <div class="card">
+        <img src="{{asset($product->image)}}" alt="Denim Jeans" style="width: 260px; height: 300px" />
+        <h2>{{$product->productName}}</h2>
+        <p class="price">{{$product->price}}</p>
+        <p class="brand">{{$product->brand}}</p>
+        <p class="stock">{{$product->category['name']}}</p>
+
+        @if($product->stock > 0)
+        <form action="/addCart/{{$product->id}}" method="POST">
+          @csrf
+          <p><button type="submit">Add to Cart</button></p>
+        </form>
+        @else
+        <p> <strong>Out of Stock </strong> </p>
+        @endif
+      </div>
     </div>
     @endforeach
-</div>
+  </div>
 
 
 
