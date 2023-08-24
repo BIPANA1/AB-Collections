@@ -28,7 +28,7 @@
                 </div>
                 
                 <ul>
-                <li><a style="font-size: 18px" href="/create-products">Product</a></li>
+
               
                                 
                 </ul>
@@ -41,8 +41,7 @@
                 <div class="home">
                     <div>
                         <ul style="margin-top: 10px">
-                            <li><a style="font-size: 18px; background-color: white; color: black;" href="/home">Home</a></li>
-                            <li><a style="font-size: 18px" href="#">View Cart</a></li>
+
                             
                        
                     <div style="margin-left: 30px">
@@ -68,7 +67,7 @@
                         <li><a style="font-size: 18px" href="{{ route('register') }}">Register</a></li>
                         @endif
                     </div>
-                    <li><a style="font-size: 23px" href=""><i class="fa-solid fa-cart-plus"></i></a></li> 
+
 
                         </ul>
                     </div>

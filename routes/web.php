@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\Editprofile;
 use App\Models\product;
@@ -50,6 +52,9 @@ Route::group(['middleware' => ["auth", "admin"]], function () {
     Route::get('/delete-product/{id}', [ProductController::class, 'destroy']);
     Route::post('/update-product/{id}', [ProductController::class, 'update']);
     Route::get('/edit-product{id}', [ProductController::class, 'edit']);
+
+     // order
+     Route::get('/order', [FrontendController::class, 'order']);
 });
 
 Route::group(['middleware' => ["auth"]], function () {
@@ -60,4 +65,19 @@ Route::group(['middleware' => ["auth"]], function () {
 
     // product page
     Route::get('/create-products',[FrontendController::class,'createProduct']);
+
+    // add to cart 
+    Route::get('/cart',[CartController::class,'cart']);
+    Route::post('/addCart/{id}',[CartController::class,'store']);
+    Route::get('/destroy-cart/{id}', [CartController::class, 'destroy']);
+
+
+    // quantity increase and decrease
+    Route::post('/updateQuantity',[CartController::class,'updateQuantity'])->name('cart.updateQuantity');
+
+    // order
+    Route::post('/order', [OrderController::class, 'store']);
+    Route::get('/order-details', [OrderController::class, 'orderDetails']);
+    Route::get('/delete-details/{id}',[OrderController::class,'destroy']);
+
 });
