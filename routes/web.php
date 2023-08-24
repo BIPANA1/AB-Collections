@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
 use App\Models\Editprofile;
 use App\Models\product;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::get('/create-products',[FrontendController::class,'createProduct']);
 
 Route::get('/show-category', [FilterController::class, 'showCategory']);
 Route::get('/show-highestprice', [FilterController::class, 'showHighestPrice']);
+// search
+Route::post('/search', [SearchController::class, 'search']);
 Auth::routes();
 
 Route::group(['middleware' => ["auth", "admin"]], function () {
