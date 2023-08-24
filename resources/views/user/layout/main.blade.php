@@ -33,10 +33,13 @@
 
                 </ul>
                 <div class="logo search-div">
-                    <div class="input-group">
-                        <input type="text" class="input" name="search" placeholder="Search">
-                        <input class="button--submit" value="Search" type="submit">
-                    </div>
+                    <form action="/search" method="post">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" class="input" name="search" placeholder="Search">
+                            <input class="button--submit" value="Search" type="submit">
+                        </div>
+                    </form>
                 </div>
                 <div class="home">
                     <div>
@@ -71,7 +74,7 @@
                                 <li><a style="font-size: 18px" href="{{ route('register') }}">Register</a></li>
                                 @endif
                             </div>
-                            
+
                         </ul>
                     </div>
                 </div>
