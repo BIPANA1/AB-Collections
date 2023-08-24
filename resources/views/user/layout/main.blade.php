@@ -26,11 +26,11 @@
                 <div class="logo">
                     <a href="/home"> <img src="/Image/ESBA.png" alt="ESBA Logo" style="height: 40px; width: 90px"> </a>
                 </div>
-                
+
                 <ul>
 
-              
-                                
+
+
                 </ul>
                 <div class="logo search-div">
                     <div class="input-group">
@@ -41,34 +41,37 @@
                 <div class="home">
                     <div>
                         <ul style="margin-top: 10px">
+                            <li><a style="font-size: 18px; background-color: white; color: black;" href="/home">Home</a></li>
+                            <li><a style="font-size: 18px; background-color: white; color: black;" href="/create-products">product</a></li>
+                            <li><a style="font-size: 23px" href="/cart"><i class="fa-solid fa-cart-plus"> cart </i></a></li>
 
+
+
+
+                            <div style="margin-left: 30px">
+                                @if(auth()->check())
+                                @php
+                                $avatar = auth()->user()->avatar ? asset('avatars/' . auth()->user()->avatar) : asset('default-avatar.png');
+
+                                @endphp
+                                <img id="profile-img" name="avatar" class="user-img" onclick="toggleDropdown();" src=" {{$avatar}} " alt="Profile Image">
+                                <div class="click-img" id="dropdown">
+                                    <a href="/create">Edit Profile</a>
+                                    <a href="/view-profile">View Profiles</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+
+                                @else
+                                <li><a style="font-size: 18px" href="{{ route('login') }}">Login</a></li>
+                                <li><a style="font-size: 18px" href="{{ route('register') }}">Register</a></li>
+                                @endif
+                            </div>
                             
-                       
-                    <div style="margin-left: 30px">
-                        @if(auth()->check())
-                        @php
-                        $avatar = auth()->user()->avatar ? asset('avatars/' . auth()->user()->avatar) : asset('default-avatar.png');
-
-                        @endphp
-                        <img id="profile-img" name="avatar" class="user-img" onclick="toggleDropdown();" src=" {{$avatar}} " alt="Profile Image">
-                        <div class="click-img" id="dropdown">
-                            <a href="/create">Edit Profile</a>
-                            <a href="/view-profile">View Profiles</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-
-                        @else
-                        <li><a style="font-size: 18px" href="{{ route('login') }}">Login</a></li>
-                        <li><a style="font-size: 18px" href="{{ route('register') }}">Register</a></li>
-                        @endif
-                    </div>
-
-
                         </ul>
                     </div>
                 </div>
