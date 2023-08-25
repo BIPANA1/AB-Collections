@@ -95,7 +95,7 @@
   @if($carts->count() > 0)
   <div class="table-responsive">
     <div>
-      <button class="btn"> <a href=""> checkout </a> </button>
+      <button class="btn"> <a href="/checkout"> checkout </a> </button>
     </div>
     <br>
     <form action="/updateQuantity" method="POST">
