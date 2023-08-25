@@ -37,6 +37,8 @@ Route::get('/show-category', [FilterController::class, 'showCategory']);
 Route::get('/show-highestprice', [FilterController::class, 'showHighestPrice']);
 // search
 Route::post('/search', [SearchController::class, 'search']);
+
+
 Auth::routes();
 
 Route::group(['middleware' => ["auth", "admin"]], function () {
@@ -57,7 +59,7 @@ Route::group(['middleware' => ["auth", "admin"]], function () {
     Route::get('/edit-product{id}', [ProductController::class, 'edit']);
 
      // order
-     Route::get('/order', [FrontendController::class, 'order']);
+     Route::get('/order', [OrderController::class, 'store']);
 });
 
 Route::group(['middleware' => ["auth"]], function () {
@@ -82,5 +84,14 @@ Route::group(['middleware' => ["auth"]], function () {
     Route::post('/order', [OrderController::class, 'store']);
     Route::get('/order-details', [OrderController::class, 'orderDetails']);
     Route::get('/delete-details/{id}',[OrderController::class,'destroy']);
+
+
+     // checkout
+     Route::get('/checkout', [OrderController::class, 'checkout']);
+     Route::get('/place-order', [OrderController::class, 'placeOrder']);
+
+    // search
+    Route::post('/search', [SearchController::class, 'search']);
+    
 
 });

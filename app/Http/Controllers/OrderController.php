@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\orderDetails;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -28,15 +29,12 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+   
 
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function store(Request $request)
     {
 
         $order = new Order();
@@ -61,42 +59,56 @@ class OrderController extends Controller
 
         foreach ($cart as $c) {
             $product = product::find($c->product_id);
-            $product = new product();
-            $product->order_id = $order->id;
-            $product->product_id = $c->product_id;
-            $product->qty = $c->quantity;
-            $product->user_id = $request->user()->id;
-            $product->product_price = $order->total_price;
-            $product->save();
+            $orderDetails = new orderDetails();
+            $orderDetails->order_id = $order->id;
+            $orderDetails->product_id = $c->product_id;
+            $orderDetails->qty = $c->quantity;
+            $orderDetails->user_id = $request->user()->id;
+            $orderDetails->product_price = $order->total_price;
+            $orderDetails->save();
 
 
             $c->delete();
         }
 
-        return redirect()->back();
+        return redirect('/order-details');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order)
+    public function orderDetails()
     {
-        //
+        
+        $user = auth()->user();
+        $orderDetails = orderDetails::where('user_id', $user->id)->get();
+        return view('user.orderDetails',compact('orderDetails'));
+      
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function checkout()
     {
-        //
+        return view('user.checkout');
     }
+    
+    public function placeOrder()
+    {
+        return back();
+    }
+    
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        
+        $data = orderDetails::where('id', $id)->first();
+        $data->delete();
+        return redirect()->back();
     }
 }
