@@ -59,7 +59,9 @@ Route::group(['middleware' => ["auth", "admin"]], function () {
     Route::get('/edit-product{id}', [ProductController::class, 'edit']);
 
      // order
-     Route::get('/order', [OrderController::class, 'store']);
+     
+     Route::get('/order', [FrontendController::class, 'order']);
+     Route::get('/delete-order/{id}', [FrontendController::class, 'deleteOrder']);
 });
 
 Route::group(['middleware' => ["auth"]], function () {

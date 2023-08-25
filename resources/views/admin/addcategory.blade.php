@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Order
+                        <a href="/order" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Order
                         </a>
                     </li>
                     <li style="background-color: #4414a4">

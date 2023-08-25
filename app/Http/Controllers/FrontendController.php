@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\category;
+use App\Models\Order;
+use App\Models\orderDetails;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -32,5 +34,18 @@ class FrontendController extends Controller
     public function createProduct(){
         $products = product::all();
         return view('user.product',compact('products'));
+    }
+
+    public function order(){
+        $orderDetails = orderDetails::latest()->get();
+        $orders = Order::latest()->get();
+        return view('admin.order',compact('orders','orderDetails'));
+    }
+
+    public function deleteOrder($id){
+        $item = orderDetails::find($id);
+        $item->delete();
+        return back();
+        
     }
 }
