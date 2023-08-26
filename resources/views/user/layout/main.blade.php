@@ -71,6 +71,7 @@
 
                                 @else
                                 <li><a style="font-size: 18px" href="{{ route('login') }}">Login</a></li>
+                                
                                 <li><a style="font-size: 18px" href="{{ route('register') }}">Register</a></li>
                                 @endif
                             </div>
