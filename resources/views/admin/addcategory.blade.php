@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{asset('css/addproduct.css')}}" />
+    <title>Add Category</title>
+    <link rel="stylesheet" href="{{ asset('css/addproduct.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
@@ -17,25 +17,23 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="/home" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
-                            Dashboard
+                        <a href="/home" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="" class="icon-a"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;
-                            Customer
+                        <a href="" class="icon-a"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp; Customer
                         </a>
                     </li>
                     <li>
                         <a href="/order" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Order
                         </a>
                     </li>
-                    <li>
-                        <a href="/category" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Category
+                    <li style="background-color: #4414a4">
+                        <a href="/addcategory" style="color: white" class="icon-a"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;&nbsp; Category
                         </a>
                     </li>
-                    <li style="background-color: #4414a4">
-                        <a href="/product" class="icon-a" style="color: white"><i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;&nbsp; Product
+                    <li>
+                        <a href="/product" class="icon-a"><i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;&nbsp; Product
                         </a>
                     </li>
                 </ul>
@@ -50,9 +48,18 @@
                     @csrf
                 </form>
                 </a>
-
             </div>
+            <div class="form">
 
+                <form action="/store-category" method="post">
+                    @csrf
+                    <div class="product-input-dtls">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <input type="submit" value="Add Category" placeholder="Add" />
+                </form>
+            </div>
         </div>
     </div>
 </body>

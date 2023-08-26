@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{asset('css/addproduct.css')}}" />
+    <title>Product Page</title>
+    <link rel="stylesheet" href="{{asset('css/product.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
@@ -15,6 +15,7 @@
                 <div class="img">
                     <img class="image-logo" src="/Image/ESBA.png" alt="" />
                 </div>
+
                 <ul>
                     <li>
                         <a href="/home" class="icon-a"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;
@@ -50,9 +51,50 @@
                     @csrf
                 </form>
                 </a>
-
             </div>
+            <div class="product-heading">
+                <div class="add-product">
+                    <h2>Products</h2>
+                </div>
+                <div class="add-product">
+                    <a href="/addproduct"><button class="add-btn">
+                            <span>Add Product</span>
+                        </button></a>
 
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="ProductTable">
+
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach($products as $product)
+                    <tr>
+                        <td>{{$product->id}}</td>
+                        <td><img class="product-img" src="{{asset($product->image)}}" alt="" /></td>
+                        <td>{{$product->productName}}</td>
+                        <td>{{$product->price}}</td>
+                        <td>{{$product->stock}}</td>
+                        <td>{{$product->brand}}</td>
+                        <td>{{$product->category['name']}}</td>
+                        <td>
+                            <a href="/edit-product{{$product->id}}"> <button class="Edit">Edit</button></a>
+                            <a href="/delete-product/{{$product->id}}"> <button class="Delete">Delete</button></a>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </table>
+            </div>
         </div>
     </div>
 </body>
